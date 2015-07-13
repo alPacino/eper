@@ -8,15 +8,9 @@
 -author('Mats Cronqvist').
 -export([encrypt/1,encrypt/2,decrypt/1,decrypt/2]).
 
--ifdef(CRYPTO_R16).
 -define(HASH(Data),hash(md5,Data)).
 -define(BLOCK_ENCRYPT(Key,IVec,Text),block_encrypt(des_cbc,Key,IVec,Text)).
 -define(BLOCK_DECRYPT(Key,IVec,Text),block_decrypt(des_cbc,Key,IVec,Text)).
--else.
--define(HASH(Data),md5(Data)).
--define(BLOCK_ENCRYPT(Key,IVec,Text),des_cbc_encrypt(Key,IVec,Text)).
--define(BLOCK_DECRYPT(Key,IVec,Text),des_cbc_decrypt(Key,IVec,Text)).
--endif.
 
 phrase() -> atom_to_list(erlang:get_cookie()).
 
